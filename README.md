@@ -7,6 +7,7 @@ create a secrets.py file with variables:
  username = 'your_username'
  password = 'your_password'
 ```
+Add `model-resnet.h5` in `beauty_predict` folder
 
 please add more features to this, would be awesome to see what you can come up w
 
