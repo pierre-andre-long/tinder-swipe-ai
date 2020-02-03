@@ -57,6 +57,10 @@ def scores(path):
     OUT = []
     for i, d in enumerate(dets):
         face = [d.rect.left(), d.rect.top(), d.rect.right(), d.rect.bottom()]
+        face[0] = max(0, face[1])
+        face[1] = max(0, face[1])
+        face[2] = min(im.shape[1] - 1, face[2])
+        face[3] = min(im.shape[0] - 1, face[3])
         croped_im = im[face[1]:face[3], face[0]:face[2], :]
         resized_im = cv2.resize(croped_im, (224, 224))
         normed_im = np.array([(resized_im - 127.5) / 127.5])
