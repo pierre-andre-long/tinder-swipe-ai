@@ -62,7 +62,10 @@ def scores(path):
         face[2] = min(im.shape[1] - 1, face[2])
         face[3] = min(im.shape[0] - 1, face[3])
         croped_im = im[face[1]:face[3], face[0]:face[2], :]
-        resized_im = cv2.resize(croped_im, (224, 224))
+        try:
+            resized_im = cv2.resize(croped_im, (224, 224))
+        except:
+            break
         normed_im = np.array([(resized_im - 127.5) / 127.5])
 
         pred = model.predict(normed_im)
